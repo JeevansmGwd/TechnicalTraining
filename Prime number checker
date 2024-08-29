@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int flag = 0, num = 0;
+        num = sc.nextInt();
+        if (num == 0 || num == 1) {
+            System.out.println("Neither composite nor prime");
+        } else if (num == 2) {
+            System.out.println("Next Prime number is 3 and No previous prime number");
+        } else {
+            System.out.print("Previous Prime number is ");
+            prevPrime(num);
+            System.out.print(" and Next Prime number is ");
+            nextPrime(num);
+        }
+    }
+
+    public static void nextPrime(int num) { // Checking the next prime number from the current value.
+        num++;
+        while (!isPrime(num)) {
+            num++;
+        }
+        System.out.println(num);
+    }
+
+    public static void prevPrime(int num) { // Checking the previous prime number from the current value.
+        num--;
+        while (!isPrime(num)) {
+            num--;
+        }
+        System.out.println(num);
+    }
+
+    public static boolean isPrime(int num) { // Checking if the number is prime or not.
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i * i <= num; i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
